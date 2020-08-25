@@ -1,2 +1,7 @@
 childname;transaction_id;transaction_date;transaction_amount;current_amount;description
 Michael;1;2020-08-24 09:02:54;40;40;w35
+Michael;2;2020-08-25 16:51:40;-5;35;candy
+Michael;3;2020-08-25 16:51:41;-5;30;candy
+Michael;4;2020-08-25 16:54:00;-5;25;candy
+Michael;5;2020-08-25 16:54:01;-5;20;candy
+Michael;6;2020-08-25 16:54:02;-5;15;candy

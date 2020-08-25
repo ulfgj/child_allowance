@@ -12,18 +12,6 @@ class Child:
         self.transaction_amount = transaction_amount
 
 
-    def add_money(self):
-        """"Add amount for period."""
-        self.current_amount = self.current_amount + self.raise_amount
-        self.num_of_transactions += 1
-
-
-    def use_money(self, used_amount):
-        """Subtracts from current_amount when child uses money."""
-        self.current_amount + (self.transaction_amount)  # addition used; cus x + (-y) is correct
-        self.num_of_transactions += 1
-
-
     def get_current_data(self):
         """Reads latest entry (last line) in database for instance."""
         with open('sample_csv_michael.csv', 'r') as csv_file:
@@ -54,6 +42,6 @@ class Child:
 
 if __name__ == '__main__':
     # Child(name, description, amount)
-    michael = Child('Michael', 'w51', 2)
+    michael = Child('Michael', 'candy', -5)
     current_data = michael.get_current_data()
     michael.store_transaction(current_data)
