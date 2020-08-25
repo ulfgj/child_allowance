@@ -69,6 +69,7 @@ if __name__ == '__main__':
     child = Child(args.childname, args.description, args.amount)
     if args.create:
         child.create_child()
+        print(f"created child entry: {child.get_current_data()}")
     else:
         print(f"current: {child.get_current_data()}")
         current_data = child.get_current_data()
