@@ -8,7 +8,6 @@ system for keeping track of my 3 kid's allowances
 soon
 
 * set up up sys.args for adding transactions
-* automatically add amount for each period
 
 later
 
