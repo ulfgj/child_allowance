@@ -3,7 +3,7 @@ import csv
 import argparse
 
 ap = argparse.ArgumentParser()
-ap.add_argument('--create', action='store_true')
+ap.add_argument('-c', '--create', action='store_true')
 ap.add_argument('childname')
 ap.add_argument('amount', type=int)
 ap.add_argument('description', nargs='?')
