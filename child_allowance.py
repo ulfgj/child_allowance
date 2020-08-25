@@ -3,8 +3,6 @@ import csv
 
 class Child:
 
-    num_of_children = 0
-
 
     def __init__(self, childname, description, transaction_amount=2):
         self.childname = childname
