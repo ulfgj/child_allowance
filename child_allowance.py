@@ -23,7 +23,7 @@ class Child:
 
     def get_current_data(self):
         """Reads latest entry (last line) in database for instance."""
-        with open(f'{self.childname}_sample.csv', 'r') as csv_file:
+        with open(f'{self.childname}_log.csv', 'r') as csv_file:
             reader = csv.reader(csv_file, delimiter=';')
             return list(reader)[-1]
 
@@ -38,7 +38,7 @@ class Child:
             self.transaction_amount,  # no old amount existed before
             'creation of record'
         ]
-        with open(f'{self.childname}_sample.csv', mode='w+') as child_file:
+        with open(f'{self.childname}_log.csv', mode='w+') as child_file:
             child_writer = csv.writer(child_file, delimiter=';', quotechar='"', quoting=csv.QUOTE_MINIMAL)
             child_writer.writerow(header)
             child_writer.writerow(child_data)
@@ -51,7 +51,6 @@ class Child:
         transaction_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         new_amount = current_amount + self.transaction_amount
         # print(f"{self.childname}  {transaction_id}  {transaction_date}  {self.transaction_amount}  {new_amount}  {self.description}")
-        print(header)
         child_data = [
             self.childname,
             transaction_id,
@@ -60,20 +59,18 @@ class Child:
             new_amount,
             self.description
         ]
-        with open(f'{self.childname}_sample.csv', mode='a+') as child_file:
+        with open(f'{self.childname}_log.csv', mode='a+') as child_file:
             child_writer = csv.writer(child_file, delimiter=';', quotechar='"', quoting=csv.QUOTE_MINIMAL)
             child_writer.writerow(child_data)
 
 
 if __name__ == '__main__':
-    # # Child(name, description, amount)
-    # child1 = Child('child1', 'candy', -5)
-    # current_data = child1.get_current_data()
-    # child1.store_transaction(current_data)
 
     child = Child(args.childname, args.description, args.amount)
     if args.create:
         child.create_child()
     else:
+        print(f"current: {child.get_current_data()}")
         current_data = child.get_current_data()
         child.store_transaction(current_data)
+        print(f"updated: {child.get_current_data()}")
