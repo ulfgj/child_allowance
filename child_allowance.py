@@ -1,5 +1,14 @@
 from datetime import datetime
 import csv
+import argparse
+
+ap = argparse.ArgumentParser()
+ap.add_argument('--create', nargs='?')
+ap.add_argument('childname')
+ap.add_argument('amount', type=int)
+ap.add_argument('description', nargs='?')
+args = ap.parse_args()
+
 
 class Child:
 
@@ -19,23 +28,55 @@ class Child:
 
     def store_transaction(self, data):
         """Stores transaction in database."""
-        current_amount = int(data[4])
-        transaction_id = int(data[1]) + 1
-        transaction_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        new_amount = current_amount + self.transaction_amount
 
-        print(f"{self.childname}  {transaction_id}  {transaction_date}  {self.transaction_amount}  {new_amount}  {self.description}")
+        # if create child
+        if args.create:
 
-        with open(f'{self.childname}_sample.csv', mode='a') as child_file:
-            child_writer = csv.writer(child_file, delimiter=';', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-            child_writer.writerow([
-                self.childname,
-                transaction_id,
-                transaction_date,
-                self.transaction_amount,
-                new_amount,
-                self.description
-            ])
+            # create new file
+            header = [self.childname, transaction_id, transaction_date, self.transaction_amount, new_amount, self.description]
+            with open(f'{self.childname}_sample.csv', mode='w+') as child_file:
+                child_writer = csv.writer(child_file, delimiter=';', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+                child_writer.writerow(header)
+
+            print('creation time!')
+            # child_data = [
+            #     self.childname,
+            #     transaction_id,
+            #     transaction_date,
+            #     self.transaction_amount,
+            #     self.transaction_amount, # no old amount existed before
+            #     'creation'
+            # ]
+
+            with open(f'{self.childname}_sample.csv', mode='a+') as child_file:
+                child_writer = csv.writer(child_file, delimiter=';', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+                child_writer.writerow(child_data)
+
+        # if add transaction for existing child
+        else:
+            # current_amount = int(data[4])
+            # transaction_id = int(data[1]) + 1
+            # transaction_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            # new_amount = current_amount + self.transaction_amount
+
+            # print(f"{self.childname}  {transaction_id}  {transaction_date}  {self.transaction_amount}  {new_amount}  {self.description}")
+
+            # child_data = [
+            #     self.childname,
+            #     transaction_id,
+            #     transaction_date,
+            #     self.transaction_amount,
+            #     new_amount,
+            #     self.description
+            # ]
+
+            # with open(f'{self.childname}_sample.csv', mode='a+') as child_file:
+            #     child_writer = csv.writer(child_file, delimiter=';', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+            #     child_writer.writerow(child_data)
+
+
+
+
 
 
 if __name__ == '__main__':
