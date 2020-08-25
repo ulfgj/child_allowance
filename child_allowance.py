@@ -48,7 +48,7 @@ class Child:
         print(new_amount)
         print(self.description)
 
-        with open('sample_csv_michael.csv', mode='a+') as child_file:
+        with open('sample_csv_michael.csv', mode='a') as child_file:
             child_writer = csv.writer(child_file, delimiter=';', quotechar='"', quoting=csv.QUOTE_MINIMAL)
             child_writer.writerow([
                 self.childname,  # childname
@@ -61,6 +61,6 @@ class Child:
 
 
 if __name__ == '__main__':
-    misa = Child('Michael Ulf Rexa', 'w51', 80)
-    current_data = misa.get_current_data()
-    misa.store_transaction(current_data)
+    michael = Child('Michael', 'w51', 2)
+    current_data = michael.get_current_data()
+    michael.store_transaction(current_data)
