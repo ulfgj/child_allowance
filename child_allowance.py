@@ -7,11 +7,9 @@ class Child:
 
 
     def __init__(self, childname, description, transaction_amount=2):
-        self.childname = childname
         self.description = description
         self.transaction_amount = transaction_amount
-        self.num_of_transactions = 0
-
+        # self.num_of_transactions = 0
 
     def add_money(self):
         """"Add amount for period."""
@@ -42,16 +40,12 @@ class Child:
         transaction_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         new_amount = current_amount + self.transaction_amount
 
-        print(childname)
-        print(transaction_id)
-        print(transaction_date)
-        print(new_amount)
-        print(self.description)
+        print(f"{childname}  {transaction_id}  {transaction_date}  {self.transaction_amount}  {new_amount}  {self.description}")
 
         with open('sample_csv_michael.csv', mode='a') as child_file:
             child_writer = csv.writer(child_file, delimiter=';', quotechar='"', quoting=csv.QUOTE_MINIMAL)
             child_writer.writerow([
-                self.childname,  # childname
+                childname,  # childname
                 transaction_id,  # transaction_id
                 transaction_date,  # transaction_date
                 self.transaction_amount,  # transaction_amount
@@ -61,6 +55,7 @@ class Child:
 
 
 if __name__ == '__main__':
+    # Child(name, description, amount)
     michael = Child('Michael', 'w51', 2)
     current_data = michael.get_current_data()
     michael.store_transaction(current_data)
