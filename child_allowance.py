@@ -15,12 +15,10 @@ header = ['childname', 'transaction_id', 'transaction_date', 'transaction_amount
 
 class Child:
 
-
     def __init__(self, childname, description, transaction_amount=2):
         self.childname = childname
         self.description = description
         self.transaction_amount = transaction_amount
-
 
 
     def get_current_data(self):
@@ -62,7 +60,6 @@ class Child:
             new_amount,
             self.description
         ]
-
         with open(f'{self.childname}_sample.csv', mode='a+') as child_file:
             child_writer = csv.writer(child_file, delimiter=';', quotechar='"', quoting=csv.QUOTE_MINIMAL)
             child_writer.writerow(child_data)
