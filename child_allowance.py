@@ -12,7 +12,7 @@ class Child:
 
     def get_current_data(self):
         """Reads latest entry (last line) in database for instance."""
-        with open('sample_csv_michael.csv', 'r') as csv_file:
+        with open(f'{self.childname}_sample.csv', 'r') as csv_file:
             reader = csv.reader(csv_file, delimiter=';')
             return list(reader)[-1]
 
@@ -26,20 +26,20 @@ class Child:
 
         print(f"{self.childname}  {transaction_id}  {transaction_date}  {self.transaction_amount}  {new_amount}  {self.description}")
 
-        with open('sample_csv_michael.csv', mode='a') as child_file:
+        with open(f'{self.childname}_sample.csv', mode='a') as child_file:
             child_writer = csv.writer(child_file, delimiter=';', quotechar='"', quoting=csv.QUOTE_MINIMAL)
             child_writer.writerow([
-                self.childname,  # childname
-                transaction_id,  # transaction_id
-                transaction_date,  # transaction_date
-                self.transaction_amount,  # transaction_amount
-                new_amount,  # current_amount
-                self.description  # description
+                self.childname,
+                transaction_id,
+                transaction_date,
+                self.transaction_amount,
+                new_amount,
+                self.description
             ])
 
 
 if __name__ == '__main__':
     # Child(name, description, amount)
-    michael = Child('Michael', 'candy', -5)
-    current_data = michael.get_current_data()
-    michael.store_transaction(current_data)
+    child1 = Child('child1', 'candy', -5)
+    current_data = child1.get_current_data()
+    child1.store_transaction(current_data)
