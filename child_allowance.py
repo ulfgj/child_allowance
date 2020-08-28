@@ -4,8 +4,9 @@ import argparse
 
 ap = argparse.ArgumentParser()
 ap.add_argument('-c', '--create', action='store_true')
+ap.add_argument('-i', '--info', action='store_true')
 ap.add_argument('childname')
-ap.add_argument('amount', type=int)
+ap.add_argument('amount', type=int, nargs='?')
 ap.add_argument('description', nargs='?')
 args = ap.parse_args()
 
@@ -70,8 +71,9 @@ if __name__ == '__main__':
     if args.create:
         child.create_child()
         print(f"created child entry: {child.get_current_data()}")
-    else:
+    elif args.info:
         print(f"current: {child.get_current_data()}")
+    else:
         current_data = child.get_current_data()
         child.store_transaction(current_data)
         print(f"updated: {child.get_current_data()}")
