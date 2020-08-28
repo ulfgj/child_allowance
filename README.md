@@ -35,6 +35,14 @@ Tony;2;2020-04-20 16:20:56;5;45;weekend child labor
 Tony;3;2020-08-25 10:20:03;-15;30;expensive candy
 ```
 
+Just check the current status of Tony's savings:
+```shell
+$ python child_allowance.py --info Tony
+
+output:
+current: ['Tony', '3', '2020-08-25 10:20:03', '-15', '30', 'expensive candy']
+```
+
 ### TODO
 
 soon
