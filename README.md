@@ -43,7 +43,7 @@ output:
 current: ['Tony', '3', '2020-08-25 10:20:03', '-15', '30', 'expensive candy']
 ```
 
-### TODO
+## TODO
 
 * automatically add amount for each period child receives allowance (cron)
     - I.E. automatically add €2 every sunday on the week kid is here
