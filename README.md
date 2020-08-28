@@ -45,5 +45,6 @@ current: ['Tony', '3', '2020-08-25 10:20:03', '-15', '30', 'expensive candy']
 
 ### TODO
 
-* automatically (cron) add amount for each period child receives allowance
+* automatically add amount for each period child receives allowance (cron)
+    - I.E. automatically add €2 every sunday on the week kid is here
 * change name to "child_economy" or similar since it includes more than just allowance
