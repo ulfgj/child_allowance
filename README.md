@@ -45,10 +45,5 @@ current: ['Tony', '3', '2020-08-25 10:20:03', '-15', '30', 'expensive candy']
 
 ### TODO
 
-soon
-
-* better command-line interface for adding transactions?
-
-later
-
-* automatically add amount for each period child receives allowance
+* automatically (cron) add amount for each period child receives allowance
+* change name to "child_economy" or similar since it includes more than just allowance
