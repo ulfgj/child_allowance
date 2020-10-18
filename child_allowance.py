@@ -72,7 +72,10 @@ if __name__ == '__main__':
         child.create_child()
         print(f"created child entry: {child.get_current_data()}")
     elif args.info:
-        print(f"current: {child.get_current_data()}")
+        try:
+            print(f"current: {child.get_current_data()}")
+        except FileNotFoundError:
+            print(f'non-existing child: {args.childname}')
     else:
         current_data = child.get_current_data()
         child.store_transaction(current_data)
